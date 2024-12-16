@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="text-center mt-5 text-muted">
-                        Copyright &copy; 2017-2021 &mdash; Tu Empresa
+                        Copyright &copy; 2017-2021 &mdash; horasvoae
                     </div>
                 </div>
             </div>
