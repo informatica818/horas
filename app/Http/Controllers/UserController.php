@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+     return view('Users.create');
     }
 
     /**
@@ -30,7 +30,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Create the user
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        // Redirect to the users list
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente');
     }
 
     /**
@@ -46,7 +61,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('Users.edit', compact('user'));
     }
 
     /**
@@ -62,6 +78,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'Usuario borrado Correctamente');
     }
 }

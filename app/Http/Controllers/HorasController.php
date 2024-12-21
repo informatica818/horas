@@ -90,7 +90,30 @@ public function descargarArchivo($id)
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'ambito' => 'required|string|max:255',
+            'archivo' => 'nullable|file|mimes:pdf|max:512',
+            'cantidad' => 'required|integer',
+        ]);
+
+        $hora = Hora::findOrFail($id);
+
+        $data = [
+            'titulo' => $request->input('titulo'),
+            'ambito' => $request->input('ambito'),
+            'cantidad' => $request->input('cantidad'),
+        ];
+
+        if ($request->hasFile('archivo')) {
+            $archivoBinario = file_get_contents($request->file('archivo')->getRealPath());
+            $data['archivo'] = $archivoBinario;
+        }
+
+        $hora->update($data);
+
+        return redirect()->back()->with('success', 'Constancia actualizada correctamente');
+    
     }
 
     /**
