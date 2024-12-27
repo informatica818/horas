@@ -1,29 +1,50 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('adminlte::page')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
+@section('title', 'Editar perfil')
+
+@section('content_header')
+@stop
+
+@section('content')
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</head>
+<div class="py-5">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        @include('profile.partials.update-profile-information-form')
+                    </div>
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
+            <div class="col-md-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        @include('profile.partials.update-password-form')
+                    </div>
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
+            <div class="col-md-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        @include('profile.partials.delete-user-form')
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+
+@stop
+
+
+
+
+
+    

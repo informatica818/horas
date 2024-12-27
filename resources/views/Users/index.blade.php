@@ -41,9 +41,6 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->format('d/m/Y') }}</td>
                         <td>
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary btn-sm">
-                                <i class="bi bi-eye"></i>
-                            </a>
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">
                                 <i class="bi bi-pencil"></i>
                             </a>
